@@ -1,4 +1,3 @@
-import { motion } from 'motion/react';
 import { useState, useEffect, ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import { ImageWithFallback } from '../components/ui/image-with-fallback';
@@ -67,20 +66,15 @@ export function Layout({ children }: LayoutProps) {
 
       {/* Animated Purple Sun Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <motion.div
+        <div
           className="absolute"
           style={{
             bottom: `${sunBottomPosition}%`,
             left: '50%',
-            transform: 'translateX(-50%)',
+            transform: `translateX(-50%) translate(${(mousePosition.x - 0.5) * 30}px, ${(mousePosition.y - 0.5) * 30}px)`,
             width: '700px',
             height: '700px',
           }}
-          animate={{
-            x: (mousePosition.x - 0.5) * 30,
-            y: (mousePosition.y - 0.5) * 30,
-          }}
-          transition={{ type: 'spring', stiffness: 40, damping: 25 }}
         >
           {/* Outer glow */}
           <div
@@ -102,7 +96,7 @@ export function Layout({ children }: LayoutProps) {
               boxShadow: '0 0 120px rgba(168, 85, 247, 0.6), inset 0 0 60px rgba(192, 132, 252, 0.3)',
             }}
           />
-        </motion.div>
+        </div>
         
         {/* Mountain Silhouette with Moon Texture */}
         <div className="absolute bottom-0 left-0 right-0 h-72">
